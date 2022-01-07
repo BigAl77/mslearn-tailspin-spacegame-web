@@ -16,12 +16,13 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
-env:
-  MY_MAPPED_ENV_VAR: $(sec1)
+
 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+env:
+  MY_MAPPED_ENV_VAR: $(sec1)
 
 - task: VSBuild@1
   inputs:
