@@ -12,10 +12,14 @@ variables:
   dotnetSdkVersion: '5.x'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+- task: NuGetToolInstaller@1
+
+
+- task: NuGetCommand@2
   inputs:
-    version: '$(dotnetSdkVersion)'
+    restoreSolution: '$(solution)'
+env:
+  MY_MAPPED_ENV_VAR: $(sec1)
 
 - task: Npm@1
   displayName: 'Run npm install'
